@@ -15,9 +15,7 @@ import com.github.ucchyocean.lc.util.ClickableFormat;
 import com.github.ucchyocean.lc.util.KeywordReplacer;
 import com.github.ucchyocean.lc.util.Utility;
 import com.github.ucchyocean.lc.util.YamlConfig;
-import net.kyori.text.Component;
-import net.kyori.text.ComponentBuilders;
-import net.kyori.text.TextComponent;
+import net.kyori.adventure.text.Component;
 
 import javax.swing.text.html.Option;
 
@@ -100,7 +98,7 @@ public class Messages {
      */
     public static Component joinMessage(Object color, Object channel, Object player) {
         String msg = resources.getString("joinMessage");
-        if ( msg == null ) return TextComponent.builder().build();
+        if ( msg == null ) return Component.empty();
         ClickableFormat cf = ClickableFormat.makeChannelClickableMessage(msg, channel.toString());
         cf.replace("%color%", color.toString());
         cf.replace("%channel%", channel.toString());
@@ -113,7 +111,7 @@ public class Messages {
      */
     public static Component quitMessage(Object color, Object channel, Object player) {
         String msg = resources.getString("quitMessage");
-        if ( msg == null ) return TextComponent.builder().build();
+        if ( msg == null ) return Component.empty();
         ClickableFormat cf = ClickableFormat.makeChannelClickableMessage(msg, channel.toString());
         cf.replace("%color%", color.toString());
         cf.replace("%channel%", channel.toString());
@@ -138,7 +136,7 @@ public class Messages {
      */
     public static Component banMessage(Object color, Object channel, Object player) {
         String msg = resources.getString("banMessage");
-        if ( msg == null ) return TextComponent.builder().build();
+        if ( msg == null ) return Component.empty();
         ClickableFormat cf = ClickableFormat.makeChannelClickableMessage(msg, channel.toString());
         cf.replace("%color%", color.toString());
         cf.replace("%channel%", channel.toString());
@@ -151,7 +149,7 @@ public class Messages {
      */
     public static Component kickMessage(Object color, Object channel, Object player) {
         String msg = resources.getString("kickMessage");
-        if ( msg == null ) return TextComponent.builder().build();
+        if ( msg == null ) return Component.empty();
         ClickableFormat cf = ClickableFormat.makeChannelClickableMessage(msg, channel.toString());
         cf.replace("%color%", color.toString());
         cf.replace("%channel%", channel.toString());
@@ -164,7 +162,7 @@ public class Messages {
      */
     public static Component muteMessage(Object color, Object channel, Object player) {
         String msg = resources.getString("muteMessage");
-        if ( msg == null ) return TextComponent.builder().build();
+        if ( msg == null ) return Component.empty();
         ClickableFormat cf = ClickableFormat.makeChannelClickableMessage(msg, channel.toString());
         cf.replace("%color%", color.toString());
         cf.replace("%channel%", channel.toString());
@@ -216,7 +214,7 @@ public class Messages {
      */
     public static Component banWithExpireMessage(Object color, Object channel, Object player, Object minutes) {
         String msg = resources.getString("banWithExpireMessage");
-        if ( msg == null ) return TextComponent.builder().build();
+        if ( msg == null ) return Component.empty();
         ClickableFormat cf = ClickableFormat.makeChannelClickableMessage(msg, channel.toString());
         cf.replace("%color%", color.toString());
         cf.replace("%channel%", channel.toString());
@@ -230,7 +228,7 @@ public class Messages {
      */
     public static Component muteWithExpireMessage(Object color, Object channel, Object player, Object minutes) {
         String msg = resources.getString("muteWithExpireMessage");
-        if ( msg == null ) return TextComponent.builder().build();
+        if ( msg == null ) return Component.empty();
         ClickableFormat cf = ClickableFormat.makeChannelClickableMessage(msg, channel.toString());
         cf.replace("%color%", color.toString());
         cf.replace("%channel%", channel.toString());
@@ -244,7 +242,7 @@ public class Messages {
      */
     public static Component pardonMessage(Object color, Object channel, Object player) {
         String msg = resources.getString("pardonMessage");
-        if ( msg == null ) return TextComponent.builder().build();
+        if ( msg == null ) return Component.empty();
         ClickableFormat cf = ClickableFormat.makeChannelClickableMessage(msg, channel.toString());
         cf.replace("%color%", color.toString());
         cf.replace("%channel%", channel.toString());
@@ -257,7 +255,7 @@ public class Messages {
      */
     public static Component unmuteMessage(Object color, Object channel, Object player) {
         String msg = resources.getString("unmuteMessage");
-        if ( msg == null ) return TextComponent.builder().build();
+        if ( msg == null ) return Component.empty();
         ClickableFormat cf = ClickableFormat.makeChannelClickableMessage(msg, channel.toString());
         cf.replace("%color%", color.toString());
         cf.replace("%channel%", channel.toString());
@@ -296,7 +294,7 @@ public class Messages {
      */
     public static Component addModeratorMessage(Object color, Object channel, Object player) {
         String msg = resources.getString("addModeratorMessage");
-        if ( msg == null ) return TextComponent.builder().build();
+        if ( msg == null ) return Component.empty();
         ClickableFormat cf = ClickableFormat.makeChannelClickableMessage(msg, channel.toString());
         cf.replace("%color%", color.toString());
         cf.replace("%channel%", channel.toString());
@@ -309,7 +307,7 @@ public class Messages {
      */
     public static Component removeModeratorMessage(Object color, Object channel, Object player) {
         String msg = resources.getString("removeModeratorMessage");
-        if ( msg == null ) return TextComponent.builder().build();
+        if ( msg == null ) return Component.empty();
         ClickableFormat cf = ClickableFormat.makeChannelClickableMessage(msg, channel.toString());
         cf.replace("%color%", color.toString());
         cf.replace("%channel%", channel.toString());
@@ -322,7 +320,7 @@ public class Messages {
      */
     public static Component noRecipientMessage(Object color, Object channel) {
         String msg = resources.getString("noRecipientMessage");
-        if ( msg == null ) return TextComponent.builder().build();
+        if ( msg == null ) return Component.empty();
         ClickableFormat cf = ClickableFormat.makeChannelClickableMessage(msg, channel.toString());
         cf.replace("%color%", color.toString());
         cf.replace("%channel%", channel.toString());
@@ -366,7 +364,7 @@ public class Messages {
      */
     public static Component listFormat(Object channel, Object online, Object total, Object topic) {
         String msg = resources.getString("listFormat");
-        if ( msg == null ) return TextComponent.builder().build();
+        if ( msg == null ) return Component.empty();
         ClickableFormat cf = ClickableFormat.makeChannelClickableMessage(msg, channel.toString());
         cf.replace("%channel%", channel.toString());
         cf.replace("%online%", online.toString());

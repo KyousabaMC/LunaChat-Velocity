@@ -14,8 +14,7 @@ import com.github.ucchyocean.lc.LunaChat;
 import com.github.ucchyocean.lc.LunaChatVelocity;
 import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.ServerConnection;
-import net.kyori.text.Component;
-import net.kyori.text.TextComponent;
+import net.kyori.adventure.text.Component;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -144,7 +143,7 @@ public class ChannelMemberPlayer extends ChannelMemberVelocity {
     public void sendMessage(String message) {
         if ( message == null || message.isEmpty() ) return;
         Optional<Player> player = getPlayer();
-        player.ifPresent(value -> value.sendMessage(TextComponent.of(message)));
+        player.ifPresent(value -> value.sendMessage(Component.text(message)));
     }
 
     /**
