@@ -218,8 +218,6 @@ public class ClickableFormat {
                 tc.color(last.color());
             }
 
-            LunaChatVelocity.getInstance().getLogger().info( "TC is "+ tc);
-
             components.add(tc);
 
             lastIndex = matcher.end();
