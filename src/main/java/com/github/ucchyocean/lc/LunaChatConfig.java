@@ -7,13 +7,13 @@ package com.github.ucchyocean.lc;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.regex.Pattern;
 
 import com.github.ucchyocean.lc.util.EventPriority;
 import com.github.ucchyocean.lc.japanize.JapanizeType;
-import com.github.ucchyocean.lc.util.EventPriority;
 import com.github.ucchyocean.lc.util.Utility;
 import com.github.ucchyocean.lc.util.YamlConfig;
 
@@ -158,6 +158,9 @@ public class LunaChatConfig {
     /** Bungeeパススルーモード */
     private boolean bungeePassThroughMode;
 
+    /** バックエンドのサーバーの表示名 */
+    private final HashMap<String, String> backendServerNames = new HashMap<>();
+
     /**
      * コンストラクタ
      * @param dataFolder コンフィグ格納フォルダ
@@ -272,6 +275,12 @@ public class LunaChatConfig {
         japanizeWait = config.getInt("japanizeWait", 1);
 
         bungeePassThroughMode = config.getBoolean("bungeePassThroughMode", false);
+
+        backendServerNames.clear();
+        config.createSection("backendServerNames").getKeys(false).forEach(server -> {
+            System.out.println(server);
+            backendServerNames.put(server, config.getString("backendServerNames."+server));
+        });
 
         // globalチャンネルが、使用可能なチャンネル名かどうかを調べる
         if ( globalChannel != null && !globalChannel.equals("") &&
@@ -614,6 +623,14 @@ public class LunaChatConfig {
      */
     public boolean isBungeePassThroughMode() {
         return bungeePassThroughMode;
+    }
+
+    /**
+     * 全てのサーバーのチャットを全ての配下のSpigotサーバーに流すモードかどうかを返す
+     * @return sendAllMessageToAllServerMode
+     */
+    public HashMap<String, String> getBackendServerNames() {
+        return new HashMap<>(backendServerNames);
     }
 
     /**

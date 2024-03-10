@@ -27,14 +27,13 @@ import com.velocitypowered.api.event.connection.PluginMessageEvent;
 import com.velocitypowered.api.event.connection.PostLoginEvent;
 import com.velocitypowered.api.event.player.PlayerChatEvent;
 import com.velocitypowered.api.proxy.Player;
+import com.velocitypowered.api.proxy.ServerConnection;
 import com.velocitypowered.api.proxy.server.RegisteredServer;
 import net.kyori.adventure.text.Component;
 
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -138,8 +137,10 @@ public class VelocityEventListener {
 
         // 発言者を取得する　サーバー名を設定できる場合は設定する
         ChannelMemberOther member = msg.getMember();
-        LunaChatVelocity.PROXY.getPlayer(member.getName()).flatMap(Player::getCurrentServer).ifPresent(server ->
-                member.setServerName(server.getServerInfo().getName()));
+        AtomicReference<String> serverName = new AtomicReference<>(serverConnection.getServer().getServerInfo().getName());
+        config.getBackendServerNames().forEach((id, name) -> serverName.set(serverName.get().replace(id, name)));
+        member.setServerName(serverName.get());
+
         // 発言処理する
         processChat(member, msg.getMessage());
     }

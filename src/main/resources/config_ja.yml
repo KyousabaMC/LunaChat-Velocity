@@ -235,3 +235,10 @@ japanizePlayerDefault: true
 # 返送してもらってから処理を行うモードです。
 # 配下のすべてのspigotサーバーにも、LunaChatの導入が必要です。
 bungeePassThroughMode: false
+
+# バックエンドのサーバーの表示名設定
+backendServerNames:
+  lobby: "ロビー"
+  life: "生活"
+  resource: "資源"
+  event: "イベント"
