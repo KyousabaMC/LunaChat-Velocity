@@ -126,8 +126,10 @@ public class VelocityEventListener {
         if ( msg == null ) return;
 
         // 受信者と発言者が一致しない場合は無視する
-        if ( event.getSource() instanceof Player ) {
-            Player receiver = (Player)event.getSource();
+        ServerConnection serverConnection;
+        if ( event.getSource() instanceof ServerConnection) {
+            serverConnection = (ServerConnection) event.getSource();
+            Player receiver = serverConnection.getPlayer();
             if ( !receiver.getUsername().equals(msg.getMember().getName()) ) {
                 return;
             }
